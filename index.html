@@ -510,6 +510,234 @@
         text-align: center
       }
     }
+    /* REVIEWS */
+    .reviews {
+      padding: 100px 48px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .reviews-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+    }
+
+    .reviews-header p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .reviews-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Review Form */
+    .review-form-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 36px;
+    }
+
+    .review-form-box h3 {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      color: var(--light);
+    }
+
+    .star-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+
+    .star {
+      font-size: 2.2rem;
+      cursor: pointer;
+      color: rgba(255,255,255,0.15);
+      transition: color 0.2s, transform 0.2s;
+      user-select: none;
+    }
+
+    .star:hover,
+    .star.active {
+      color: #f5c518;
+      transform: scale(1.15);
+    }
+
+    .review-name-field {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.05);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      color: white;
+      outline: none;
+      transition: border-color 0.3s;
+      margin-bottom: 14px;
+    }
+
+    .review-name-field:focus { border-color: var(--accent); }
+    .review-name-field::placeholder { color: rgba(255,255,255,0.25); }
+
+    .feedback-box {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .feedback-box.visible { display: flex; }
+
+    .feedback-box label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .feedback-box textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.05);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      color: white;
+      outline: none;
+      resize: none;
+      height: 90px;
+      transition: border-color 0.3s;
+    }
+
+    .feedback-box textarea:focus { border-color: var(--accent); }
+    .feedback-box textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+    .btn-submit-review {
+      width: 100%;
+      padding: 13px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .btn-submit-review:hover { opacity: 0.85; }
+    .btn-submit-review:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .review-success {
+      display: none;
+      text-align: center;
+      padding: 24px;
+      color: #7dffb3;
+      font-size: 0.92rem;
+    }
+
+    .review-success .big { font-size: 2.5rem; margin-bottom: 12px; }
+
+    /* Review Cards */
+    .reviews-list-box h3 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      color: var(--light);
+    }
+
+    .avg-score {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .avg-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #f5c518;
+      line-height: 1;
+    }
+
+    .avg-stars { color: #f5c518; font-size: 1rem; letter-spacing: 2px; }
+    .avg-count { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .reviews-list::-webkit-scrollbar { width: 4px; }
+    .reviews-list::-webkit-scrollbar-track { background: transparent; }
+    .reviews-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+    .review-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px;
+      padding: 18px 20px;
+    }
+
+    .review-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .review-card-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .review-card-stars { color: #f5c518; font-size: 0.85rem; }
+
+    .review-card-text {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .review-card-date {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.2);
+      margin-top: 8px;
+    }
+
+    .no-reviews {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 40px 0;
+      font-style: italic;
+    }
+
+    @media(max-width:768px) {
+      .reviews { padding: 80px 20px; }
+      .reviews-layout { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 
@@ -521,6 +749,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div>
@@ -664,15 +893,168 @@
     </div>
   </section>
 
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="reviews-header">
+      <h2>Client <span style="color:var(--accent);font-style:italic;">Reviews</span></h2>
+      <p>Honest feedback from people I've worked with — leave yours below!</p>
+    </div>
+    <div class="reviews-layout">
+
+      <!-- Submit Form -->
+      <div class="review-form-box">
+        <h3>Leave a Review</h3>
+        <div class="star-row" id="starRow">
+          <span class="star" data-val="1">★</span>
+          <span class="star" data-val="2">★</span>
+          <span class="star" data-val="3">★</span>
+          <span class="star" data-val="4">★</span>
+          <span class="star" data-val="5">★</span>
+        </div>
+        <input class="review-name-field" id="reviewName" type="text" placeholder="Your name (e.g. Jane S.)">
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px;">
+          <label style="font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);">Your Message</label>
+          <textarea id="reviewMessage" class="review-name-field" style="height:80px;resize:none;margin-bottom:0;" placeholder="Share your experience working with me..."></textarea>
+        </div>
+        <div class="feedback-box" id="feedbackBox">
+          <label>What could I improve? (helps me get better 🙏)</label>
+          <textarea id="feedbackText" placeholder="Tell me what didn't meet your expectations..."></textarea>
+        </div>
+        <button class="btn-submit-review" id="submitReview" disabled onclick="submitReview()">Submit Review</button>
+        <div class="review-success" id="reviewSuccess">
+          <div class="big">🎉</div>
+          <div>Thank you for your review!</div>
+        </div>
+      </div>
+
+      <!-- Reviews List -->
+      <div class="reviews-list-box">
+        <h3>What Clients Say</h3>
+        <div class="avg-score" id="avgScore" style="display:none;">
+          <div>
+            <div class="avg-num" id="avgNum">—</div>
+            <div class="avg-stars" id="avgStars"></div>
+            <div class="avg-count" id="avgCount"></div>
+          </div>
+        </div>
+        <div class="reviews-list" id="reviewsList">
+          <div class="no-reviews" id="noReviews">No reviews yet — be the first! ⭐</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <footer>
     <p>© 2026 J's Designs · Freelance Web Designer</p>
     <div class="footer-links">
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Work</a>
+      <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </div>
   </footer>
+
+  <script>
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('.star');
+    const feedbackBox = document.getElementById('feedbackBox');
+    const submitBtn = document.getElementById('submitReview');
+    const reviewName = document.getElementById('reviewName');
+
+    // Star hover & click
+    stars.forEach(star => {
+      star.addEventListener('mouseenter', () => highlightStars(+star.dataset.val));
+      star.addEventListener('mouseleave', () => highlightStars(selectedRating));
+      star.addEventListener('click', () => {
+        selectedRating = +star.dataset.val;
+        highlightStars(selectedRating);
+        feedbackBox.classList.toggle('visible', selectedRating <= 3);
+        checkReady();
+      });
+    });
+
+    reviewName.addEventListener('input', checkReady);
+
+    function highlightStars(val) {
+      stars.forEach(s => s.classList.toggle('active', +s.dataset.val <= val));
+    }
+
+    function checkReady() {
+      submitBtn.disabled = !(selectedRating > 0 && reviewName.value.trim().length > 0);
+    }
+
+    function starsToEmoji(n) {
+      return '★'.repeat(n) + '☆'.repeat(5 - n);
+    }
+
+    function submitReview() {
+      const name = reviewName.value.trim();
+      const rating = selectedRating;
+      const feedback = document.getElementById('feedbackText').value.trim();
+      const message = document.getElementById('reviewMessage').value.trim();
+      const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+      const review = { name, rating, feedback, message, date };
+
+      // Save to localStorage
+      const existing = JSON.parse(localStorage.getItem('jdesigns_reviews') || '[]');
+      existing.unshift(review);
+      localStorage.setItem('jdesigns_reviews', JSON.stringify(existing));
+
+      // Show success
+      document.getElementById('reviewSuccess').style.display = 'block';
+      submitBtn.style.display = 'none';
+      feedbackBox.classList.remove('visible');
+
+      renderReviews();
+    }
+
+    function renderReviews() {
+      const reviews = JSON.parse(localStorage.getItem('jdesigns_reviews') || '[]');
+      const list = document.getElementById('reviewsList');
+      const noReviews = document.getElementById('noReviews');
+      const avgScore = document.getElementById('avgScore');
+
+      if (reviews.length === 0) {
+        noReviews.style.display = 'block';
+        avgScore.style.display = 'none';
+        return;
+      }
+
+      noReviews.style.display = 'none';
+      avgScore.style.display = 'flex';
+
+      // Avg
+      const avg = (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1);
+      document.getElementById('avgNum').textContent = avg;
+      document.getElementById('avgStars').textContent = starsToEmoji(Math.round(avg));
+      document.getElementById('avgCount').textContent = reviews.length + (reviews.length === 1 ? ' review' : ' reviews');
+
+      // Cards — keep existing noReviews node, replace cards
+      const existing = list.querySelectorAll('.review-card');
+      existing.forEach(el => el.remove());
+
+      reviews.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'review-card';
+        card.innerHTML = `
+          <div class="review-card-top">
+            <span class="review-card-name">${r.name}</span>
+            <span class="review-card-stars">${starsToEmoji(r.rating)}</span>
+          </div>
+          ${r.message ? `<div class="review-card-text" style="margin-bottom:6px;">"${r.message}"</div>` : ''}
+          ${r.feedback ? `<div class="review-card-text" style="color:rgba(255,255,255,0.35);font-size:0.78rem;">Improvement note: ${r.feedback}</div>` : ''}
+          <div class="review-card-date">${r.date}</div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    // Load on page open
+    renderReviews();
+  </script>
 
 </body>
 
