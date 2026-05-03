@@ -957,6 +957,10 @@
   </footer>
 
   <script>
+    const BIN_ID = '69f6a298aaba88219764fbef';
+    const API_KEY = '$2a$10$OOii911BJI8Zl/l68f4QYOamAMVGCpZVIrweRjhkdHcK6DrXkQchO';
+    const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
     let selectedRating = 0;
     const stars = document.querySelectorAll('.star');
     const feedbackBox = document.getElementById('feedbackBox');
@@ -976,6 +980,7 @@
     });
 
     reviewName.addEventListener('input', checkReady);
+    document.getElementById('reviewMessage').addEventListener('input', checkReady);
 
     function highlightStars(val) {
       stars.forEach(s => s.classList.toggle('active', +s.dataset.val <= val));
@@ -989,7 +994,29 @@
       return '★'.repeat(n) + '☆'.repeat(5 - n);
     }
 
-    function submitReview() {
+    async function getReviews() {
+      const res = await fetch(BIN_URL + '/latest', {
+        headers: { 'X-Master-Key': API_KEY, 'X-Bin-Meta': 'false' }
+      });
+      const data = await res.json();
+      return data.reviews || [];
+    }
+
+    async function saveReviews(reviews) {
+      await fetch(BIN_URL, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Master-Key': API_KEY
+        },
+        body: JSON.stringify({ reviews })
+      });
+    }
+
+    async function submitReview() {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
       const name = reviewName.value.trim();
       const rating = selectedRating;
       const feedback = document.getElementById('feedbackText').value.trim();
@@ -998,26 +1025,28 @@
 
       const review = { name, rating, feedback, message, date };
 
-      // Save to localStorage
-      const existing = JSON.parse(localStorage.getItem('jdesigns_reviews') || '[]');
-      existing.unshift(review);
-      localStorage.setItem('jdesigns_reviews', JSON.stringify(existing));
+      try {
+        const existing = await getReviews();
+        existing.unshift(review);
+        await saveReviews(existing);
 
-      // Show success
-      document.getElementById('reviewSuccess').style.display = 'block';
-      submitBtn.style.display = 'none';
-      feedbackBox.classList.remove('visible');
-
-      renderReviews();
+        document.getElementById('reviewSuccess').style.display = 'block';
+        submitBtn.style.display = 'none';
+        feedbackBox.classList.remove('visible');
+        renderReviews(existing);
+      } catch (e) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Review';
+        alert('Something went wrong, please try again!');
+      }
     }
 
-    function renderReviews() {
-      const reviews = JSON.parse(localStorage.getItem('jdesigns_reviews') || '[]');
+    function renderReviews(reviews) {
       const list = document.getElementById('reviewsList');
       const noReviews = document.getElementById('noReviews');
       const avgScore = document.getElementById('avgScore');
 
-      if (reviews.length === 0) {
+      if (!reviews || reviews.length === 0) {
         noReviews.style.display = 'block';
         avgScore.style.display = 'none';
         return;
@@ -1026,15 +1055,12 @@
       noReviews.style.display = 'none';
       avgScore.style.display = 'flex';
 
-      // Avg
       const avg = (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1);
       document.getElementById('avgNum').textContent = avg;
       document.getElementById('avgStars').textContent = starsToEmoji(Math.round(avg));
       document.getElementById('avgCount').textContent = reviews.length + (reviews.length === 1 ? ' review' : ' reviews');
 
-      // Cards — keep existing noReviews node, replace cards
-      const existing = list.querySelectorAll('.review-card');
-      existing.forEach(el => el.remove());
+      list.querySelectorAll('.review-card').forEach(el => el.remove());
 
       reviews.forEach(r => {
         const card = document.createElement('div');
@@ -1052,8 +1078,8 @@
       });
     }
 
-    // Load on page open
-    renderReviews();
+    // Load reviews on page open
+    getReviews().then(renderReviews).catch(() => {});
   </script>
 
 </body>
