@@ -1038,7 +1038,7 @@
 
   <script>
     const BIN_ID = '69f6a298aaba88219764fbef';
-    const API_KEY = '$2a$10$OOii911BJI8Zl/l68f4QYOamAMVGCpZVIrweRjhkdHcK6DrXkQchO';
+    const API_KEY = '$2a$10$KHdNCU715ve4gLy2kdp9rO86bS1kVHdeLoolHVS1jMnYAHSXXq//u';
     const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
     let selectedRating = 0;
@@ -1076,7 +1076,7 @@
 
     async function getReviews() {
       const res = await fetch(BIN_URL + '/latest', {
-        headers: { 'X-Master-Key': API_KEY, 'X-Bin-Meta': 'false' }
+        headers: { 'X-Access-Key': API_KEY, 'X-Bin-Meta': 'false' }
       });
       const data = await res.json();
       return data.reviews || [];
@@ -1087,7 +1087,7 @@
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'X-Master-Key': API_KEY
+          'X-Access-Key': API_KEY
         },
         body: JSON.stringify({ reviews })
       });
