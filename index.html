@@ -352,6 +352,57 @@
       letter-spacing: 0.05em
     }
 
+    /* HOW IT WORKS */
+    .how {
+      padding: 100px 48px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05)
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .how-step {
+      padding: 36px 30px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      text-align: center;
+      transition: border-color .3s, background .3s;
+      position: relative;
+    }
+
+    .how-step:hover {
+      border-color: var(--accent);
+      background: rgba(108, 99, 255, 0.04);
+    }
+
+    .how-step-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .how-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: var(--light);
+    }
+
+    .how-step p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
     /* PORTFOLIO */
     .portfolio {
       padding: 100px 48px;
@@ -433,6 +484,62 @@
 
     .project-link:hover {
       opacity: 0.7
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 100px 48px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 24px 0;
+      cursor: pointer;
+    }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--light);
+      font-weight: 700;
+    }
+
+    .faq-q::after {
+      content: '+';
+      color: var(--accent);
+      font-size: 1.6rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      transition: transform 0.3s;
+      margin-left: 16px;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding-top 0.3s ease;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding-top: 14px;
     }
 
     /* CONTACT */
@@ -561,7 +668,9 @@
       .hero,
       .about,
       .services,
+      .how,
       .portfolio,
+      .faq,
       .contact {
         padding: 80px 20px
       }
@@ -819,7 +928,9 @@
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#how">Process</a></li>
       <li><a href="#portfolio">Work</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -889,6 +1000,31 @@
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-top">
+      <h2>How It Works</h2>
+      <p>From first message to live site in under a week — no agency runaround.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="how-step-num">— Step One</span>
+        <h3>We Chat</h3>
+        <p>Tell me about your business, what you need on the site, and any style or color preferences. Free, no pressure, takes about 10 minutes.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-step-num">— Step Two</span>
+        <h3>I Build It</h3>
+        <p>You send a 50% deposit, I build a draft in 2–3 days. You review and I revise — usually one round of changes is all it takes.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-step-num">— Step Three</span>
+        <h3>You Launch</h3>
+        <p>Final 50% on approval. Site goes live on your domain (or one I set up). You own it forever. Optional maintenance available.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- PORTFOLIO -->
   <section class="portfolio" id="portfolio">
     <div class="section-top">
@@ -947,6 +1083,40 @@
         </div>
       </div>
       </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-top">
+      <h2>Common Questions</h2>
+      <p>Stuff people actually ask before working with me.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">How long until my site is live?</div>
+        <div class="faq-a">Usually 3 days from when I get your content for a landing page, 5 days for a multi-page site. I'll give you a clear date upfront and stick to it.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What do I need to provide?</div>
+        <div class="faq-a">Just the basics — your business info, hours, menu or services, any photos you want included, and your brand colors if you have them. If you don't, I'll suggest something that fits your vibe.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How does payment work?</div>
+        <div class="faq-a">50% upfront to start, 50% when the site is approved and ready to go live. Venmo, Cash App, or check to my parent for invoicing — whichever works best for you.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I own the site after it's built?</div>
+        <div class="faq-a">Yes — fully yours. I can host it on a free GitHub Pages domain, or set it up on a custom domain (.com) for $25 extra. You can move it anywhere later, no lock-in.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I need changes later?</div>
+        <div class="faq-a">One-time edits are $15 each. Quarterly maintenance ($45/quarter) covers regular updates, content swaps, and small fixes — perfect if you want me on call without paying per edit.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why are your prices so low?</div>
+        <div class="faq-a">Because I'm new and building a portfolio. I'd rather charge less and earn 5-star reviews than charge agency rates and disappoint anyone. Prices will go up as I build a track record — so this is a good time to lock in low rates.</div>
+      </div>
     </div>
   </section>
 
@@ -1030,7 +1200,9 @@
     <div class="footer-links">
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="#how">Process</a>
       <a href="#portfolio">Work</a>
+      <a href="#faq">FAQ</a>
       <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </div>
@@ -1160,6 +1332,11 @@
 
     // Load reviews on page open
     getReviews().then(renderReviews).catch(() => {});
+
+    // FAQ toggles
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => item.classList.toggle('open'));
+    });
 
     // Contact Form
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
