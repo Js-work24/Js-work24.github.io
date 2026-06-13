@@ -77,6 +77,24 @@
   }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'YOUR_PIXEL_ID');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   <style>
     * {
       margin: 0;
@@ -732,6 +750,7 @@
       font-size: 1.1rem;
       margin-bottom: 24px;
       color: var(--light);
+      text-align: center;
     }
 
     .star-row {
@@ -838,15 +857,18 @@
       font-size: 1.1rem;
       margin-bottom: 20px;
       color: var(--light);
+      text-align: center;
     }
 
     .avg-score {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       margin-bottom: 24px;
       padding-bottom: 20px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
     }
 
     .avg-num {
@@ -942,8 +964,8 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-tag">Freelance Web Designer · Available for Work</div>
-    <h1>I Build <span>Beautiful</span><br>Websites for<br>Small Businesses</h1>
-    <p>Hi, I'm a teen freelance web designer just getting started. I use modern design tools to create fast, professional websites at prices small businesses can actually afford.</p>
+    <h1>Clean websites<br>for small businesses,<br>built in <span>3 days</span>.</h1>
+    <p>Hi, I'm J — a freelance web designer building modern sites for small businesses across the Southwest. New designer, fair prices, full effort on every project.</p>
     <div>
       <a href="#portfolio" class="btn">See My Work</a>
       <a href="#contact" class="btn btn-outline">Get In Touch</a>
@@ -1107,7 +1129,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">Do I own the site after it's built?</div>
-        <div class="faq-a">Yes — fully yours. I can host it on a free page domain, or set it up on a custom domain (.com) for $25 extra. You can move it anywhere later, no lock-in.</div>
+        <div class="faq-a">Yes — fully yours. I can host it on a free GitHub Pages domain, or set it up on a custom domain (.com) for $25 extra. You can move it anywhere later, no lock-in.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What if I need changes later?</div>
@@ -1209,8 +1231,8 @@
   </footer>
 
   <script>
-    const BIN_ID = '69f6a298aaba88219764fbef';
-    const API_KEY = '$2a$10$KHdNCU715ve4gLy2kdp9rO86bS1kVHdeLoolHVS1jMnYAHSXXq//u';
+    const BIN_ID = '6a15d61fd7f11659b14388aa';
+    const API_KEY = '69f6a298aaba88219764fbef';
     const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
     let selectedRating = 0;
@@ -1359,6 +1381,7 @@
         });
         document.getElementById('contactForm').style.display = 'none';
         document.getElementById('thankYouMsg').style.display = 'block';
+        if (typeof fbq !== 'undefined') fbq('track', 'Lead');
       } catch(e) {
         btn.textContent = 'Send Message';
         btn.disabled = false;
